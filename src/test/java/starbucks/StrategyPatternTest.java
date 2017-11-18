@@ -17,6 +17,7 @@ import org.junit.Test;
 public class StrategyPatternTest
 {
     IApp app ;
+    PinEntryMachine pinEntry ;
     
     /**
      * Default constructor for test class StrategyPatternTest
@@ -33,6 +34,7 @@ public class StrategyPatternTest
     @Before
     public void setUp()
     {
+    		pinEntry = new PinEntryMachine();
         app = new AppAuthProxy() ;
     }
 
@@ -46,9 +48,14 @@ public class StrategyPatternTest
 
         // Validate App is in Landscape Mode 
         // (replace with correct assert)
-        assertTrue( false ) ;     
+    		app.touch(1, 5);
+    		app.touch(2, 5);
+    		app.touch(3, 5);
+    		app.touch(4, 5);
+        app.landscape();
+        assertEquals( "MyCards", app.screen() );
+        //assertTrue( "portraitStrategy", app.screen() ) ;     
     }
-
     @Test
     public void testPortrait()
     {
@@ -58,7 +65,14 @@ public class StrategyPatternTest
 
         // Validate App is in Landscape Mode 
         // (replace with correct assert)
-        assertTrue( false ) ;       
+    		app.touch(1, 5);
+		app.touch(2, 5);
+		app.touch(3, 5);
+		app.touch(4, 5);
+        app.portrait();
+        assertEquals( "MyCards", app.screen() );
+        
+        //assertTrue( false ) ;       
     }
 
     
